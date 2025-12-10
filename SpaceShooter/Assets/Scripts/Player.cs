@@ -1,35 +1,31 @@
 using System.Diagnostics;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Damageable
 {
-    [SerializeField] float speed = 1;
-    [SerializeField] GameObject bullet;
-    [SerializeField] float pewpewRate = 1;
+    [SerializeField] private float speed = 1;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private float pewpewRate = 1;
     Vector3 destination;
 
     void Start()
     {
         InvokeRepeating("PewPew", 0, pewpewRate);
     }
-
     void Update()
     {
         Movement();
     }
-
     void FixedUpdate()
     {
         Vector2 positionInBetween = Vector2.Lerp(transform.position, destination, speed*Time.fixedDeltaTime);
 
         transform.position = positionInBetween; // A e C retorna B
     }
-
     void PewPew()
     {
-            Instantiate(bullet, transform.position, Quaternion.identity);
+        Instantiate(bullet,transform.position,Quaternion.identity);
     }
-
     void Movement()
     {
         Camera cam = Camera.main;
@@ -63,4 +59,5 @@ public class Player : MonoBehaviour
             destination = Vector2.Lerp(transform.position, destination, speed*Time.fixedDeltaTime);
         }
     }
+
 }
