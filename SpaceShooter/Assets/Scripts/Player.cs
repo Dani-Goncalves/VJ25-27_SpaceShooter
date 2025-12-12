@@ -1,11 +1,13 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Player : Damageable
 {
     [SerializeField] private float speed = 1;
-    [SerializeField] private GameObject bullet;
+    [SerializeField] private Bullet bullet;
     [SerializeField] private float pewpewRate = 1;
+    [SerializeField] private int playerDamage = 1;
     Vector3 destination;
 
     void Start()
@@ -25,6 +27,23 @@ public class Player : Damageable
     void PewPew()
     {
         Instantiate(bullet,transform.position,Quaternion.identity);
+
+        Bullet newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
+
+        newbullet.SetDamage(playerDamage);
+    }
+
+    public void Increment(StatType stat)
+    {
+        if(stat == StatType.Damage)
+        {
+            playerDamage++;
+        }
+        if(stat == StatType.Speed)
+        {
+            
+        }
+        
     }
     void Movement()
     {
@@ -54,7 +73,7 @@ public class Player : Damageable
 
             destination = mousePos;
         } 
-        else
+        else if (Input.GetMouseButton(0))
         {
             destination = Vector2.Lerp(transform.position, destination, speed*Time.fixedDeltaTime);
         }

@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
     [SerializeField] private int health =3;
+
+    [SerializeField] private GameObject explosion;
 
     public void TakeDamage(int damage)
     {
@@ -12,8 +15,19 @@ public class Damageable : MonoBehaviour
 
         if(health<=0)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
-    
+
+    public void Die()
+    {
+        Destroy(gameObject);
+        if(explosion!=null)
+        {
+            GameObject explosionInstance = Instantiate(explosion,transform.position,Quaternion.identity);
+        
+            Destroy(explosionInstance, 1);
+            
+        }
+    }
 }

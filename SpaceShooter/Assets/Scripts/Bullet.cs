@@ -4,7 +4,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] float speed;
+    [SerializeField] float speed = 1;
+    [SerializeField] private int damage = 1;
 
     void Start()
     {
@@ -12,13 +13,18 @@ public class Bullet : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        Damageable enemy = collision.gameObject.GetComponent<Enemy>();
 
         if(enemy != null)
         {
-            enemy.TakeDamage(1);
+            enemy.TakeDamage(damage);
         }
 
         Destroy(gameObject);
+    }
+
+    public void SetDamage(int newDamage)
+    {
+        damage = newDamage;
     }
 }

@@ -18,9 +18,9 @@ public class Enemy : Damageable
         if(player != null)
         {
             player.TakeDamage(collisionDamage);
-
-            Instantiate(explosion,transform.position,Quaternion.identity);
         }
+        else if(collision.gameObject.CompareTag)
+        Instantiate(explosion,transform.position,Quaternion.identity);
 
         Destroy(gameObject);
     }

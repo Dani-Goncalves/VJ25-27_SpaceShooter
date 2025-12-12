@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 4010772295282673570}
   - component: {fileID: 5746771718690174559}
   - component: {fileID: 5737375204150771295}
-  m_Layer: 0
+  - component: {fileID: -2820115524367287265}
+  - component: {fileID: 363630161275522600}
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +280,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   health: 3
+  explosion: {fileID: 2337201819209406271, guid: 8cc327717f7129449af6b7a37c25dda7, type: 3}
   rb: {fileID: 4010772295282673570}
   speed: 1
   collisionDamage: 1
-  explosion: {fileID: 3487094516843376158, guid: aab59b4496c7d4744b4c6415db60e914, type: 3}
+  explosion: {fileID: 2337201819209406271, guid: 8cc327717f7129449af6b7a37c25dda7, type: 3}
+--- !u!114 &-2820115524367287265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6062569286827101753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddbd496ef357e64b821c9703d26bbb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Damageable
+  health: 1
+  explosion: {fileID: 2337201819209406271, guid: 8cc327717f7129449af6b7a37c25dda7, type: 3}
+--- !u!114 &363630161275522600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6062569286827101753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b787c26b14371f34fb80512252288106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreObjects
+  score: 20
