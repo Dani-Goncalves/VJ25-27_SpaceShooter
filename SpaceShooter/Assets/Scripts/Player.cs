@@ -26,8 +26,6 @@ public class Player : Damageable
     }
     void PewPew()
     {
-        Instantiate(bullet,transform.position,Quaternion.identity);
-
         Bullet newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
 
         newbullet.SetDamage(playerDamage);
@@ -42,8 +40,7 @@ public class Player : Damageable
         if(stat == StatType.Speed)
         {
             
-        }
-        
+        }   
     }
     void Movement()
     {
@@ -78,5 +75,4 @@ public class Player : Damageable
             destination = Vector2.Lerp(transform.position, destination, speed*Time.fixedDeltaTime);
         }
     }
-
 }
